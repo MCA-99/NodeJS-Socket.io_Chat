@@ -1,0 +1,14 @@
+version: '3'
+services:
+    chat:
+        image: node:12.18
+        container_name: chat
+        restart: always
+        volumes:
+             - ./web:/var/www/html
+        entrypoint: bash -c "cd /var/www/html && npm install && node index.js"
+networks:
+  default:
+    external:
+      name: haproxy_default
+
